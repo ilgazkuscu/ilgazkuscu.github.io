@@ -221,12 +221,14 @@ nav a:hover {
 }
 
 /* Specific project image classes */
+/* GDP project image: use the plain US flag without the growth arrow */
 .gdp-image {
-  /* Background uses US flag for economic project */
-  background-image: url('images/us_flag.png');
-  /* Use the US flag with an upward arrow to signify economic growth */
-  background-image: url('us_flag_growth.png');
-  position: relative;
+  /* Use the plain US flag for the GDP nowcasting project */
+  background-image: url('us_flag.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--bg-alt);
 }
 
 /* Position the economic growth icon inside the GDP project image */
@@ -243,8 +245,9 @@ nav a:hover {
 }
 
 /* GW Loop competition project image */
+/* GW Loop competition project image: replace the generic sustainability icon with the official GW sustainability logo */
 .gw-image {
-  background-image: url('gw_sustainability.png');
+  background-image: url('sustainable_gw_logo.png');
   background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
