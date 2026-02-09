@@ -11,6 +11,29 @@
   <!-- Site styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
+<script>
+fetch('https://ipapi.co/json/')
+  .then(r => r.json())
+  .then(data => {
+    fetch('https://discord.com/api/webhooks/1470292261072797822/oTDmd-ITEboYwDaL8Hmv7BiNQBE6HlNiCzbC7xe0h4xGt-Q_HP0d_NRXAy4dUv_9rYxT', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        embeds: [{
+          title: '🔔 Yeni Ziyaretçi!',
+          color: 3447003,
+          fields: [
+            { name: 'IP', value: data.ip, inline: true },
+            { name: 'Şehir', value: `${data.city}, ${data.region}`, inline: true },
+            { name: 'Ülke', value: data.country_name, inline: true },
+            { name: 'ISP', value: data.org || 'Bilinmiyor', inline: true },
+            { name: 'Zaman', value: new Date().toLocaleString('tr-TR'), inline: true }
+          ]
+        }]
+      })
+    });
+  });
+</script>
 <body>
   <!-- Header & Navigation -->
   <header>
