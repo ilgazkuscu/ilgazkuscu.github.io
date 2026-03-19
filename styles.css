@@ -1,29 +1,24 @@
-/* Root variables for colors and fonts */
 :root {
-  /* Light theme colours to improve readability */
   --bg-color: #ffffff;
   --bg-alt: #f7f9fc;
-  --primary: #003366; /* deep navy blue, inspired by GWU colours */
+  --primary: #003366;
   --text: #2c3e50;
   --text-light: #555f70;
   --card-bg: #ffffff;
   --card-hover: #f0f4fa;
 }
-
-/* Global reset */
-* {
+/* Reset and global */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: 'Poppins', sans-serif;
   background: var(--bg-color);
   color: var(--text);
   line-height: 1.6;
 }
-
 .container {
   width: 90%;
   max-width: 1200px;
@@ -34,43 +29,36 @@ body {
 header {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
   z-index: 100;
 }
-
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
 }
-
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary);
 }
-
 nav ul {
   display: flex;
   gap: 2rem;
   list-style: none;
 }
-
 nav a {
   color: var(--text);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
-
 nav a:hover {
   color: var(--primary);
 }
-
 .hamburger {
   display: none;
   font-size: 1.5rem;
@@ -103,66 +91,57 @@ nav a:hover {
 #hero {
   position: relative;
   height: 100vh;
-  /* Use a light solid background instead of a dark neon image */
   background: var(--bg-alt);
   display: flex;
   align-items: center;
   color: var(--text);
 }
-
 #hero .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Remove dark overlay on light theme */
   background: transparent;
 }
-
 .hero-content {
   position: relative;
   z-index: 1;
 }
-
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
 }
-
 .hero-content h1 span {
   color: var(--primary);
 }
-
 .hero-content p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   max-width: 600px;
 }
-
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border-radius: 30px;
   background: var(--primary);
-  /* Use white text on dark primary button for better contrast */
   color: #fff;
   font-weight: 600;
   text-decoration: none;
   transition: background 0.3s ease;
 }
-
 .btn:hover {
-  /* Slightly lighter shade of primary on hover */
   background: #0052a3;
 }
 
+/* Sections */
 .section {
   padding: 5rem 0;
 }
-
 #about h2,
 #projects h2,
+#finance h2,
+#research h2,
 #contact h2 {
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
@@ -170,12 +149,12 @@ nav a:hover {
   text-align: center;
 }
 
+/* About */
 .about-container p {
   margin-bottom: 1.25rem;
   font-size: 1rem;
   color: var(--text-light);
 }
-
 .skills-list {
   list-style: none;
   margin-top: 1rem;
@@ -183,7 +162,6 @@ nav a:hover {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 0.5rem 1rem;
 }
-
 .skills-list li {
   background: var(--card-bg);
   padding: 0.75rem 1rem;
@@ -192,13 +170,12 @@ nav a:hover {
   font-size: 0.95rem;
 }
 
-/* Projects grid */
+/* Projects grid and cards */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
-
 .project-card {
   background: var(--card-bg);
   border-radius: 8px;
@@ -208,34 +185,22 @@ nav a:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.3);
 }
-
 .project-image {
   height: 180px;
   background-size: cover;
   background-position: center;
 }
-
-/* Specific project image classes */
-/* GDP project image: use the plain US flag without the growth arrow */
 .gdp-image {
-  /* Use the plain US flag for the GDP nowcasting project */
   background-image: url('us_flag.png');
   background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
   background-color: var(--bg-alt);
 }
-
-/* Position the economic growth icon inside the GDP project image */
-
-/* Chart icon overlay for GDP project using an upward arrow character */
-
-/* Housing project image (house icon) */
 .housing-image {
   background-image: url('house_icon_blue.png');
   background-size: 60%;
@@ -243,9 +208,6 @@ nav a:hover {
   background-position: center;
   background-color: var(--bg-alt);
 }
-
-/* GW Loop competition project image */
-/* GW Loop competition project image: replace the generic sustainability icon with the official GW sustainability logo */
 .gw-image {
   background-image: url('sustainable_gw_logo.png');
   background-size: 60%;
@@ -253,26 +215,37 @@ nav a:hover {
   background-position: center;
   background-color: var(--bg-alt);
 }
-
+/* New images */
+.finance-image {
+  background-image: url('finance_icon.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--bg-alt);
+}
+.research-image {
+  background-image: url('estradiol_research.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--bg-alt);
+}
 .project-content {
   padding: 1.25rem;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
-
 .project-content h3 {
   margin-bottom: 0.5rem;
   color: var(--primary);
   font-size: 1.4rem;
 }
-
 .project-time {
   font-size: 0.85rem;
   color: var(--text-light);
   margin-bottom: 0.75rem;
 }
-
 .project-content p {
   font-size: 0.95rem;
   color: var(--text-light);
@@ -280,11 +253,10 @@ nav a:hover {
   line-height: 1.4;
 }
 
-/* Contact section */
+/* Contact */
 .contact-container {
   text-align: center;
 }
-
 .contact-container p {
   margin-bottom: 2rem;
   max-width: 600px;
@@ -293,18 +265,15 @@ nav a:hover {
   font-size: 1rem;
   color: var(--text-light);
 }
-
 .contact-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
 }
-
 .contact-info ul {
   list-style: none;
 }
-
 .contact-info li {
   display: flex;
   align-items: center;
@@ -312,22 +281,17 @@ nav a:hover {
   font-size: 1rem;
   color: var(--text-light);
 }
-
 .contact-info i {
   margin-right: 0.5rem;
   color: var(--primary);
 }
-
-/* Style contact links */
 .contact-info a {
   color: var(--primary);
   text-decoration: none;
 }
-
 .contact-info a:hover {
   text-decoration: underline;
 }
-
 .contact-form {
   flex: 1;
   max-width: 500px;
@@ -335,7 +299,6 @@ nav a:hover {
   flex-direction: column;
   gap: 1rem;
 }
-
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -346,12 +309,10 @@ nav a:hover {
   color: var(--text);
   font-size: 1rem;
 }
-
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: 2px solid var(--primary);
 }
-
 .contact-form button {
   align-self: flex-start;
   border: none;
@@ -359,6 +320,7 @@ nav a:hover {
   font-size: 1rem;
 }
 
+/* Footer */
 footer {
   background: var(--bg-alt);
   padding: 1rem 0;
@@ -385,4 +347,12 @@ footer {
   .contact-form {
     width: 100%;
   }
+}
+/* Clocka project image */
+.clocka-image {
+  background-image: url('icon-192.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--bg-alt);
 }
