@@ -1,164 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ilgaz Kuscu – Portfolio</title>
-  <!-- Google Fonts for modern typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-RbkSsA7kQ5Ybfaj6mHRy6Qwfeqrk7Vop/QXYFji/mZRaWcUa3J3arE3u1mN0LximAItNduNx+eT0NlszZAm6xw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Site styles -->
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ilgaz Kuscu | Data Science Portfolio</title>
+  <meta name="description" content="Ilgaz Kuscu is a data scientist turning messy data into business, finance, policy, and risk signals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Header & Navigation -->
-  <header>
-    <div class="container header-container">
-      <div class="logo">Ilgaz Kuscu</div>
-      <nav>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-      </nav>
-    </div>
+  <header class="site-header">
+    <a class="brand" href="#top">IK</a>
+    <button class="menu-button" id="menuButton" aria-label="Toggle navigation">Menu</button>
+    <nav class="nav" id="navLinks">
+      <a href="#work">Work</a>
+      <a href="#thinking">Thinking</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content container">
-      <h1>Hi, I'm <span>Ilgaz</span></h1>
-      <!-- Tagline highlighting location and passion for data science -->
-      <p>From Washington, DC, I turn data into stories and actionable insights. If you're looking to hire a passionate data scientist, let's make an impact together.</p>
-      <a href="#projects" class="btn">View My Work</a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container about-container">
-      <h2>About Me</h2>
-      <p>
-        I'm currently pursuing an M.Sc. in Data Science at the George Washington University (expected May 2027) and hold a B.Sc. in Physics from Ludwig Maximilian University of Munich (Nov 2024). My background bridges quantitative disciplines and I enjoy turning complex datasets into actionable insights.
+  <main id="top">
+    <section class="hero section-pad">
+      <div class="eyebrow">Data science · finance · forecasting · decision intelligence</div>
+      <h1>Hi, I’m Ilgaz. I turn noisy data into signals people can actually use.</h1>
+      <p class="hero-copy">
+        I’m an M.S. Data Science student at George Washington University with a physics background from LMU Munich. My edge is not rushing to the model. I investigate the business problem first, pressure-test the data, then build the simplest model that can move a decision.
       </p>
-      <p>
-        In my recent work I've produced a real‑time nowcast of U.S. GDP growth, uncovered housing market dynamics, and optimized event processing for the ATLAS experiment at CERN. I love blending statistical rigor with creative storytelling to make data accessible and impactful.
-      </p>
-      <h3>Technical Skills</h3>
-      <ul class="skills-list">
-        <li>Programming: Python, R, Java</li>
-        <li>Data Science &amp; Econometrics: Regression, time‑series modelling, hypothesis testing</li>
-        <li>Tools: pandas, NumPy, scikit‑learn, statsmodels, PyTorch, Tableau</li>
-        <li>Data Engineering: BigQuery, MongoDB, Neo4j, Spark, Kafka</li>
-        <li>Cloud &amp; DevOps: AWS, GCP, Docker, Git</li>
-        <li>Languages: English, German, Turkish</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="section">
-    <div class="container">
-      <h2>Projects &amp; Competitions</h2>
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-          <div class="project-image gdp-image"></div>
-          <div class="project-content">
-            <h3>U.S. GDP Nowcasting</h3>
-            <span class="project-time">Aug 2025 – Dec 2025</span>
-            <p>
-              Developed a pre‑release nowcast of U.S. real GDP growth for Q3 2025 using a scalable time‑series framework in Python (statsmodels, pandas, NumPy). Supported up to 30 macroeconomic indicators and achieved a 2.2% nowcast ahead of official figures.
-            </p>
-          </div>
-        </div>
-        <!-- Project 2 -->
-        <div class="project-card">
-          <div class="project-image housing-image"></div>
-          <div class="project-content">
-            <h3>U.S. Housing Market Analysis</h3>
-            <span class="project-time">Aug 2025 – Dec 2025</span>
-            <p>
-              Engineered a regional housing dataset by merging Realtor.com supply data with U.S. Census demographics across 300+ metro areas. Discovered that months of supply positively correlate with prices and modelled drivers using regularized regression and random forests in R (tidyverse, glmnet, randomForest).
-            </p>
-          </div>
-        </div>
-        <!-- Project 3 / Competition -->
-        <div class="project-card">
-          <div class="project-image gw-image"></div>
-          <div class="project-content">
-            <h3>Data Visualization Competition</h3>
-            <span class="project-time">Dec 2025 – Feb 2026</span>
-            <p>
-              In the GW Loop Clothing Exchange competition I analyzed 877 student visits across 10 product categories. I discovered that active donors collected 46% more items per visit than non‑donors and used statistical tests to show that intrinsic motivation – not peer pressure – drives exchange behaviour.
-            </p>
-          </div>
-        </div>
-<!-- Project 4: Amazon NLP -->
-<div class="project-card">
-  <div class="project-image">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Amazon_icon.png" alt="Amazon Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;" />
-  </div>
-  <div class="project-content">
-    <h3 style="color:#FF9900; font-size: 1.5rem;">Amazon Review Sentiment Classifier</h3>
-    <span class="project-time">Feb – Mar 2026</span>
-    <p>
-      Built a robust sentiment classifier for Amazon product reviews using TF‑IDF and chi‑square feature selection. Combined logistic regression and random forest models to achieve a 94 % ROC‑AUC. Extracted actionable insights on drivers of positive feedback and recommended product improvements to boost customer satisfaction.
-    </p>
-  </div>
-</div>
-<!-- Project 5: Marketing A/B Test -->
-<div class="project-card">
-  <div class="project-image">
-    <img src="abtest_project.png" alt="Marketing A/B Test Analysis" style="width: 100%; height: 100%; object-fit: cover;" />
-  </div>
-  <div class="project-content">
-    <h3 style="color:#006699; font-size: 1.5rem;">Marketing A/B Test Analysis</h3>
-    <span class="project-time">Mar 2026</span>
-    <p>
-      Designed and analyzed a 588K‑session A/B test comparing a marketing ad to a PSA. Validated randomization via SRM checks and demonstrated a statistically significant 0.77 percentage‑point lift using two‑proportion z‑tests and bootstrapped confidence intervals. Converted this uplift into monthly revenue projections and recommended a data‑driven rollout strategy.
-    </p>
-  </div>
-</div>
+      <div class="hero-actions">
+        <a class="button primary" href="#work">See selected work</a>
+        <a class="button secondary" href="mailto:ilgazkuscu@gmail.com">Email me</a>
       </div>
-    </div>
-  </section>
+      <div class="hero-strip" aria-label="Highlights">
+        <span>GDP nowcasting</span>
+        <span>Housing markets</span>
+        <span>Traffic risk ML</span>
+        <span>CERN-scale data</span>
+        <span>Political-risk signals</span>
+      </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <div class="container contact-container">
-      <h2>Contact</h2>
-      <p>If you'd like to collaborate, have questions about my work or just want to say hello, feel free to reach out.</p>
-      <div class="contact-wrapper">
-        <div class="contact-info">
+    <section id="work" class="section-pad split-heading">
+      <div>
+        <p class="section-kicker">Selected work</p>
+        <h2>Projects built around decisions, not dashboards.</h2>
+      </div>
+      <p>
+        These are the projects that best show my range: macro forecasting, market structure, machine learning, applied visualization, and high-volume scientific data processing.
+      </p>
+    </section>
+
+    <section class="project-list">
+      <article class="project-row featured">
+        <div class="project-number">01</div>
+        <div class="project-main">
+          <p class="tag">Macroeconomics · Time series</p>
+          <h3>U.S. GDP Nowcasting</h3>
+          <p>
+            Built a pre-release GDP growth nowcast using ARIMA/ARIMAX-style workflows across roughly 30 macro indicators. The point was not just forecasting. It was building an early signal system for how growth expectations move before official data arrives.
+          </p>
           <ul>
-            <li><i class="fas fa-envelope"></i> <a href="mailto:ilgazkuscu@gmail.com">ilgazkuscu@gmail.com</a></li>
-            <li><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/ilgaz-kuscu-9a4a68331" target="_blank">LinkedIn</a></li>
-            <li><i class="fab fa-github"></i> <a href="https://github.com/ilgazkuscu" target="_blank">GitHub</a></li>
+            <li>Python, pandas, statsmodels, time-series validation</li>
+            <li>Designed around release timing, missingness, and indicator interpretation</li>
           </ul>
         </div>
-        <form class="contact-form" action="mailto:ilgazkuscu@gmail.com" method="post" enctype="text/plain">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
+        <a class="project-link" href="https://github.com/ilgazkuscu" target="_blank" rel="noreferrer">GitHub</a>
+      </article>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-container">
-      <p>&copy; 2026 Ilgaz Kuscu. All rights reserved.</p>
-    </div>
+      <article class="project-row">
+        <div class="project-number">02</div>
+        <div class="project-main">
+          <p class="tag">Housing · Regional economics</p>
+          <h3>U.S. Housing Market Modeling</h3>
+          <p>
+            Modeled pricing and supply dynamics across 300+ U.S. metro areas by combining Realtor.com supply data with Census-style demographic context. Used regularized regression and random forests to separate signal from regional noise.
+          </p>
+          <ul>
+            <li>R, tidyverse, glmnet, random forests</li>
+            <li>Focused on interpretability, market segmentation, and price-supply relationships</li>
+          </ul>
+        </div>
+        <a class="project-link" href="https://github.com/ilgazkuscu/housing-price-vs-supply-2024" target="_blank" rel="noreferrer">Repo</a>
+      </article>
+
+      <article class="project-row">
+        <div class="project-number">03</div>
+        <div class="project-main">
+          <p class="tag">Machine learning · Public safety</p>
+          <h3>U.S. Accidents Severity Prediction</h3>
+          <p>
+            Built severity models on the 2016-2023 U.S. Accidents dataset. Handled class imbalance, leakage concerns, weather/time/location features, and model comparison across Logistic Regression, Random Forest, LightGBM, and MLP-style approaches.
+          </p>
+          <ul>
+            <li>Weighted F1 focus instead of naive accuracy</li>
+            <li>Best models around Random Forest and LightGBM performance</li>
+          </ul>
+        </div>
+        <a class="project-link" href="https://github.com/ilgazkuscu/US-Accidents-2016-2023-" target="_blank" rel="noreferrer">Repo</a>
+      </article>
+
+      <article class="project-row">
+        <div class="project-number">04</div>
+        <div class="project-main">
+          <p class="tag">Visualization · Behavioral insight</p>
+          <h3>GW Loop Data Visualization Competition</h3>
+          <p>
+            Analyzed clothing exchange behavior and found that donors selected about 46% more items per visit than non-donors. Framed the result as a reciprocity pattern, then designed a polished lollipop chart for executive-style communication.
+          </p>
+          <ul>
+            <li>Python, matplotlib, visual storytelling, sustainability analytics</li>
+            <li>Clear business question first, chart second</li>
+          </ul>
+        </div>
+        <a class="project-link" href="https://github.com/ilgazkuscu/GW_Loop_Competition" target="_blank" rel="noreferrer">Repo</a>
+      </article>
+
+      <article class="project-row">
+        <div class="project-number">05</div>
+        <div class="project-main">
+          <p class="tag">Scientific computing · CERN</p>
+          <h3>ATLAS Open Data / H→γγ Analysis</h3>
+          <p>
+            Worked with photon/event data from ATLAS-style H→γγ analysis. Focused on cutflows, event selection, physics-motivated filtering, and faster awkward-array/pandas workflows for large event data.
+          </p>
+          <ul>
+            <li>Python, uproot, pandas, awkward arrays, particle-physics data</li>
+            <li>Physics discipline translated into data-engineering discipline</li>
+          </ul>
+        </div>
+        <a class="project-link" href="https://github.com/ilgazkuscu/CERN-THESIS" target="_blank" rel="noreferrer">Repo</a>
+      </article>
+
+      <article class="project-row">
+        <div class="project-number">06</div>
+        <div class="project-main">
+          <p class="tag">Startup idea · Political risk</p>
+          <h3>SignalOS</h3>
+          <p>
+            Early-stage idea for converting geopolitical and policy events into structured market-relevant signals. The thesis: political narratives can be decomposed into measurable triggers, scenario branches, and probability-weighted market implications.
+          </p>
+          <ul>
+            <li>Political risk, event encoding, market outcomes, decision intelligence</li>
+            <li>Built for people who need to act before consensus forms</li>
+          </ul>
+        </div>
+        <a class="project-link" href="https://github.com/ilgazkuscu/signalOS.github.io" target="_blank" rel="noreferrer">Repo</a>
+      </article>
+    </section>
+
+    <section id="thinking" class="section-pad thinking">
+      <p class="section-kicker">How I think</p>
+      <h2>The model comes near the end.</h2>
+      <div class="thinking-grid">
+        <div>
+          <span>01</span>
+          <h3>Start with the decision</h3>
+          <p>I ask what would actually change if the analysis works: investment choice, product rollout, risk alert, policy interpretation, or operational priority.</p>
+        </div>
+        <div>
+          <span>02</span>
+          <h3>Interrogate the data</h3>
+          <p>I look for leakage, timing problems, class imbalance, missingness, false certainty, and whether the dataset represents the real world or just collection bias.</p>
+        </div>
+        <div>
+          <span>03</span>
+          <h3>Then choose the model</h3>
+          <p>I like strong baselines, interpretable comparisons, and models that can be defended to technical and business audiences.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section-pad experience">
+      <div class="section-header">
+        <p class="section-kicker">Background</p>
+        <h2>Physics-trained. Business-oriented. Data-driven.</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="time">2025 - Present</div>
+          <div>
+            <h3>George Washington University</h3>
+            <p>M.S. in Data Science. Focused on machine learning, visualization, forecasting, and applied analytics.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">2024</div>
+          <div>
+            <h3>LMU Munich</h3>
+            <p>B.S. in Physics. Built a quantitative base through scientific computing, statistical reasoning, and particle-physics analysis.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">Projects</div>
+          <div>
+            <h3>Finance, consulting, tech, and public-sector style problems</h3>
+            <p>Nowcasting, housing markets, A/B testing, sentiment analysis, traffic severity, and political-risk signal design.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad skills">
+      <p class="section-kicker">Tools I use</p>
+      <div class="skill-cloud">
+        <span>Python</span><span>pandas</span><span>NumPy</span><span>scikit-learn</span><span>statsmodels</span><span>Plotly</span><span>Dash</span><span>Matplotlib</span><span>R</span><span>SQL</span><span>LightGBM</span><span>PyTorch</span><span>GCP</span><span>GitHub</span><span>BigQuery</span><span>Tableau</span>
+      </div>
+    </section>
+
+    <section id="contact" class="section-pad contact">
+      <p class="section-kicker">Reach me</p>
+      <h2>Looking for data science, finance analytics, consulting analytics, or decision-intelligence roles.</h2>
+      <p>
+        I’m especially interested in teams where data is tied to strategy: growth, markets, risk, product, forecasting, and business decision systems.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:ilgazkuscu@gmail.com">ilgazkuscu@gmail.com</a>
+        <a href="https://github.com/ilgazkuscu" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/ilgaz-kuscu-9a4a68331" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Ilgaz Kuscu</span>
+    <span>Built for signal over noise.</span>
   </footer>
 
-  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
