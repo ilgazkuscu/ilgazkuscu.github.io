@@ -1,10 +1,16 @@
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
-const faBars = document.querySelector(".fa-bars");
-const faTimes = document.querySelector(".fa-times");
+const menuButton = document.getElementById('menuButton');
+const navLinks = document.getElementById('navLinks');
 
-hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
-    faBars.classList.toggle("hide");
-    faTimes.classList.toggle("hide");
-});
+if (menuButton && navLinks) {
+  menuButton.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    menuButton.textContent = navLinks.classList.contains('show') ? 'Close' : 'Menu';
+  });
+
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('show');
+      menuButton.textContent = 'Menu';
+    });
+  });
+}
