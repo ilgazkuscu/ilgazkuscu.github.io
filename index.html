@@ -1,26 +1,445 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ilgaz Kuscu | Data Scientist</title>
-<style>
-body{margin:0;background:#0a0a0a;color:#f5f1e8;font-family:Arial,sans-serif}main{max-width:960px;margin:auto;padding:64px 24px}a{color:#e0a066}h1{font-size:72px;line-height:.9;margin:30px 0;font-family:Georgia,serif}h2{font-size:34px;margin-top:56px}.tag{color:#e0a066;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:bold}p{color:#bdb6aa;font-size:19px;line-height:1.65}.links a{display:inline-block;margin:8px 10px 8px 0;padding:10px 14px;border:1px solid #3a332b;border-radius:999px;text-decoration:none;color:#f5f1e8}.card{border:1px solid #2b2824;border-radius:20px;padding:22px;margin:14px 0;background:#111}small{color:#e0a066;text-transform:uppercase;letter-spacing:.15em;font-weight:bold}@media(max-width:700px){h1{font-size:50px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ilgaz Kuscu — physics-trained data scientist building data, AI, and automation systems." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <title>Ilgaz Kuscu | Data, AI & Automation</title>
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --surface: #12110f;
+      --surface-2: #191713;
+      --cream: #f5f1e8;
+      --muted: #bdb6aa;
+      --line: rgba(245,241,232,.16);
+      --accent: #e0a066;
+      --accent-soft: rgba(224,160,102,.15);
+      --green: #92cfa2;
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--ink); }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    .deck {
+      height: 100svh;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) var(--ink);
+    }
+    .slide {
+      min-height: 100svh;
+      position: relative;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      overflow: hidden;
+      display: grid;
+      align-items: center;
+      padding: clamp(28px, 5vw, 76px);
+      isolation: isolate;
+    }
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .65;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 12% 12%, var(--accent-soft), transparent 31%),
+        radial-gradient(circle at 88% 88%, rgba(245,241,232,.055), transparent 28%),
+        linear-gradient(135deg, transparent 50%, rgba(245,241,232,.022));
+      pointer-events: none;
+    }
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(245,241,232,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(245,241,232,.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    }
+    .slide-inner { width: min(1280px, 100%); margin: auto; }
+    .eyebrow, .slide-number, .label {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .slide-number { position: absolute; right: clamp(28px, 5vw, 76px); bottom: 30px; color: rgba(245,241,232,.52); z-index: 2; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.045em; }
+    h1 { font-size: clamp(56px, 10vw, 144px); max-width: 980px; line-height: .88; margin: 20px 0 28px; }
+    h2 { font-size: clamp(44px, 6vw, 86px); line-height: .94; margin-bottom: 20px; }
+    h3 { font-size: clamp(21px, 2vw, 30px); margin-bottom: 8px; }
+    p { color: var(--muted); font-size: clamp(15px, 1.45vw, 19px); line-height: 1.55; }
+    .opening-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(36px, 8vw, 120px); align-items: end; }
+    .opening-copy { max-width: 760px; }
+    .opening-copy p { max-width: 680px; font-size: clamp(18px, 2vw, 25px); }
+    .monogram {
+      aspect-ratio: 1/1;
+      width: min(330px, 70vw);
+      margin-left: auto;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      position: relative;
+      background: radial-gradient(circle at 40% 35%, rgba(224,160,102,.3), transparent 34%), rgba(245,241,232,.03);
+      animation: float 8s ease-in-out infinite;
+    }
+    .monogram::before, .monogram::after { content:""; position:absolute; border:1px solid rgba(245,241,232,.18); border-radius:50%; }
+    .monogram::before { inset: 13%; }
+    .monogram::after { inset: -12%; border-color: rgba(224,160,102,.32); border-left-color: transparent; transform: rotate(32deg); }
+    .monogram span { font: 400 clamp(76px, 11vw, 132px)/1 Georgia, serif; letter-spacing: -.12em; transform: translateX(-.05em); }
+    .hint { display: flex; align-items:center; gap: 12px; margin-top: 42px; color: rgba(245,241,232,.64); font-size: 12px; letter-spacing: .11em; text-transform: uppercase; }
+    .hint .mouse { width: 24px; height: 38px; border: 1px solid var(--line); border-radius: 12px; display: grid; justify-items: center; padding-top: 7px; }
+    .hint .mouse i { height: 7px; border-left: 1px solid var(--accent); animation: scrollHint 1.5s ease-in-out infinite; }
+
+    .project-grid { display: grid; grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); gap: clamp(32px, 6vw, 94px); align-items: center; }
+    .project-copy { max-width: 590px; }
+    .project-copy h2 { margin: 10px 0 22px; }
+    .problem { color: var(--cream); font-size: clamp(19px, 2.15vw, 28px); line-height: 1.3; margin-bottom: 27px; }
+    .detail-list { border-top: 1px solid var(--line); }
+    .detail { display: grid; grid-template-columns: 118px 1fr; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .detail .label { padding-top: 3px; color: rgba(245,241,232,.54); font-size: 10px; }
+    .detail p { margin: 0; font-size: 14px; line-height: 1.45; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 27px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(245,241,232,.025);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover, .btn:focus-visible { background: var(--accent); border-color: var(--accent); color: var(--ink); transform: translateY(-2px); outline: none; }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+    .btn.primary:hover, .btn.primary:focus-visible { background: var(--cream); border-color: var(--cream); }
+    .btn.placeholder { color: rgba(245,241,232,.62); border-style: dashed; cursor: default; }
+    .btn.placeholder:hover { background: rgba(245,241,232,.025); border-color: var(--line); color: rgba(245,241,232,.62); transform: none; }
+
+    .preview {
+      min-height: min(58vh, 580px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(17px, 2.5vw, 31px);
+      background: linear-gradient(145deg, rgba(245,241,232,.075), rgba(245,241,232,.02));
+      box-shadow: 0 30px 90px rgba(0,0,0,.25);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(25px) scale(.98);
+      opacity: .25;
+      transition: transform .85s cubic-bezier(.2,.75,.2,1), opacity .85s ease;
+    }
+    .slide.is-active .preview { transform: translateY(0) scale(1); opacity: 1; }
+    .preview-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 24px; }
+    .preview-title { font-size: 11px; color: rgba(245,241,232,.58); letter-spacing: .14em; text-transform: uppercase; }
+    .status { display:inline-flex; align-items:center; gap:6px; color: var(--green); font-size: 10px; letter-spacing: .11em; text-transform: uppercase; }
+    .status::before { content:""; width: 6px; height: 6px; background: var(--green); border-radius: 50%; box-shadow: 0 0 18px var(--green); }
+    .metric-big { font: 400 clamp(48px, 7vw, 90px)/1 Georgia, serif; letter-spacing:-.06em; color: var(--cream); }
+    .metric-caption { margin: 8px 0 24px; color: var(--muted); font-size: 13px; }
+
+    .signal-layout { display:grid; grid-template-columns: 1.25fr .75fr; gap:14px; height: calc(100% - 58px); }
+    .signal-chart, .signal-panel, .chart-card, .oasis-map, .diplomacy-panel { border: 1px solid rgba(245,241,232,.12); border-radius: 14px; background: rgba(5,5,5,.25); }
+    .signal-chart { padding: 20px; display:grid; grid-template-rows: auto 1fr auto; min-height: 350px; }
+    .timeline { position:relative; align-self:end; height: 176px; border-bottom:1px solid rgba(245,241,232,.18); border-left:1px solid rgba(245,241,232,.18); background: repeating-linear-gradient(to bottom, transparent 0 43px, rgba(245,241,232,.07) 44px 45px); }
+    .timeline svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+    .news-pulse { position:absolute; width:9px; height:9px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 7px rgba(224,160,102,.12); }
+    .news-pulse.p1 { left: 14%; top: 68%; } .news-pulse.p2 { left: 42%; top: 46%; } .news-pulse.p3 { left: 74%; top: 22%; }
+    .signal-panel { padding: 17px; display:grid; grid-template-rows: auto 1fr; }
+    .feed { display:grid; gap:10px; align-content:start; }
+    .feed-row { border-left: 2px solid var(--accent); padding-left:10px; font-size:11px; color:var(--muted); line-height:1.35; }
+    .feed-row b { display:block; color:var(--cream); font-size:12px; margin-bottom:3px; }
+
+    .cern-chart { height: 260px; border-bottom:1px solid rgba(245,241,232,.2); border-left:1px solid rgba(245,241,232,.2); position:relative; background: repeating-linear-gradient(to bottom, transparent 0 50px, rgba(245,241,232,.06) 51px 52px); }
+    .cern-chart svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+    .peak-label { position:absolute; left: 53%; top: 22px; color:var(--accent); font-size:11px; letter-spacing:.08em; }
+    .cern-stats { display:grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top:20px; }
+    .mini-stat { padding:13px; border:1px solid rgba(245,241,232,.12); border-radius:14px; }
+    .mini-stat b { display:block; font-size:clamp(22px,2.5vw,34px); font-family:Georgia,serif; font-weight:400; color:var(--cream); }
+    .mini-stat span { display:block; color:var(--muted); font-size:10px; line-height:1.35; margin-top:6px; text-transform:uppercase; letter-spacing:.1em; }
+
+    .housing-viz { display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; min-height: 390px; }
+    .metro-map { padding:16px; position:relative; overflow:hidden; }
+    .metro-map::before { content:""; position:absolute; inset: 36px 12% 20px; background: radial-gradient(ellipse at 51% 50%, rgba(224,160,102,.2), transparent 28%), radial-gradient(ellipse at 35% 44%, rgba(245,241,232,.17), transparent 22%), radial-gradient(ellipse at 64% 37%, rgba(245,241,232,.12), transparent 22%), radial-gradient(ellipse at 42% 73%, rgba(245,241,232,.11), transparent 22%); filter: blur(7px); }
+    .map-shape { position:absolute; inset:22% 12% 17%; clip-path: polygon(1% 30%,12% 19%,20% 23%,27% 14%,36% 16%,45% 10%,56% 19%,66% 18%,73% 25%,84% 23%,98% 40%,93% 54%,85% 58%,81% 70%,67% 71%,57% 84%,47% 76%,40% 88%,25% 85%,16% 72%,8% 66%); background: linear-gradient(135deg, rgba(245,241,232,.18), rgba(224,160,102,.43)); opacity:.85; }
+    .map-dot { position:absolute; width:7px; height:7px; border-radius:50%; background:var(--cream); box-shadow:0 0 14px rgba(245,241,232,.65); }
+    .map-dot:nth-child(2){left:23%;top:44%}.map-dot:nth-child(3){left:36%;top:37%}.map-dot:nth-child(4){left:50%;top:43%}.map-dot:nth-child(5){left:59%;top:34%}.map-dot:nth-child(6){left:69%;top:48%}.map-dot:nth-child(7){left:42%;top:60%}.map-dot:nth-child(8){left:75%;top:61%}
+    .housing-bars { padding: 20px; display:grid; align-content:center; gap: 18px; }
+    .bar-row { display:grid; grid-template-columns: 84px 1fr 42px; align-items:center; gap:10px; font-size:11px; color:var(--muted); }
+    .bar { height:7px; border-radius:999px; background:rgba(245,241,232,.1); overflow:hidden; }.bar i { display:block;height:100%;background:var(--accent);border-radius:inherit; }
+
+    .ab-layout { display:grid; grid-template-columns: 1fr 1fr; gap:14px; min-height: 390px; }
+    .conversion-card { padding:22px; display:grid; align-content:center; gap:20px; }
+    .conversion-bars { display:grid; gap:22px; }
+    .conversion { display:grid; gap:8px; }.conversion header { display:flex;justify-content:space-between;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.09em; }.conversion header b {color:var(--cream);font-size:15px;letter-spacing:0;}.conversion .bigbar {height:72px;background:rgba(245,241,232,.08);border-radius:10px;display:flex;align-items:end;overflow:hidden}.conversion .bigbar i {display:block;background:var(--accent);width:100%;border-radius:10px 10px 0 0;}.confidence { padding:20px; display:grid; align-content:center; gap: 12px; }.confidence .ci { height:28px; position:relative; }.confidence .ci::before {content:""; position:absolute;left:10%;right:10%;top:13px;border-top:1px solid rgba(245,241,232,.35)}.confidence .ci::after {content:""; position:absolute;left:43%;right:27%;top:8px;height:10px;background:var(--accent);border-radius:999px;box-shadow:0 0 24px rgba(224,160,102,.35)}
+
+    .oasis-layout { display:grid; grid-template-columns: 1.16fr .84fr; gap:14px; min-height:390px; }
+    .oasis-map { position:relative; padding:22px; background: linear-gradient(145deg, rgba(146,207,162,.12), rgba(245,241,232,.02)); }
+    .route { position:absolute; left:17%; right:16%; top:51%; height:2px; background:var(--accent); transform:rotate(-7deg); transform-origin:left; box-shadow:0 0 18px rgba(224,160,102,.44); }.route::before,.route::after {content:"";position:absolute; width:11px;height:11px;border:2px solid var(--cream);border-radius:50%;background:var(--ink); top:-5px;}.route::before{left:0}.route::after{right:0}.store { position:absolute;width:68px;height:46px;border:1px solid rgba(245,241,232,.36);border-radius:7px 7px 4px 4px; background:rgba(5,5,5,.27); display:grid;place-items:center;color:var(--muted);font-size:9px;text-align:center;line-height:1.2;}.store.s1{left:16%;top:25%}.store.s2{left:47%;top:30%}.store.s3{right:14%;top:27%}.store.s4{left:38%;bottom:16%}.supplier{position:absolute;left:45%;bottom:31%;width:70px;height:70px;border-radius:50%;border:1px solid var(--accent);display:grid;place-items:center;text-align:center;color:var(--cream);font-size:9px;line-height:1.25;background:rgba(224,160,102,.11)}
+    .oasis-economics { padding:20px; display:grid; align-content:center; gap:16px; }.price-comparison {display:grid;grid-template-columns:1fr 1fr;gap:10px}.price {padding:16px;border:1px solid rgba(245,241,232,.12);border-radius:14px}.price strong{display:block;font:400 42px/1 Georgia,serif;color:var(--cream)}.price small{display:block;margin-top:8px;color:var(--muted);font-size:10px;line-height:1.35;text-transform:uppercase;letter-spacing:.09em}
+
+    .diplomacy-layout { display:grid; grid-template-columns: 1.05fr .95fr; gap:14px; min-height:390px; }
+    .video-frame { position:relative; padding:20px; display:grid; place-items:center; background:linear-gradient(145deg, rgba(224,160,102,.13), rgba(245,241,232,.02)); }
+    .video-scene { width:80%; aspect-ratio:16/9; border:1px solid rgba(245,241,232,.22); background:linear-gradient(135deg, #2a2722, #111); position:relative; overflow:hidden; }.video-scene::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg, rgba(245,241,232,.035) 0 1px, transparent 1px 4px);mix-blend-mode:screen}.person{position:absolute;bottom:10%;width:26%;height:57%;background:linear-gradient(#a48362 0 18%, #1b1b1b 19% 100%);border-radius:44% 44% 10% 10%;filter:drop-shadow(0 7px 11px rgba(0,0,0,.45));}.person.president{left:26%}.person.leader{right:26%;background:linear-gradient(#765b46 0 18%, #302117 19% 100%)}.face-box{position:absolute;left:30%;top:22%;width:19%;height:27%;border:1px solid var(--accent);box-shadow:0 0 0 999px rgba(0,0,0,.05)}.timestamp{position:absolute;left:20px;bottom:15px;font-size:10px;color:var(--cream);letter-spacing:.12em}.diplomacy-panel{padding:19px;display:grid;gap:15px;align-content:center}.pipeline{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:7px;align-items:center}.step{border:1px solid rgba(245,241,232,.13);border-radius:10px;padding:10px;font-size:10px;color:var(--muted);line-height:1.3}.step b{display:block;color:var(--cream);font-size:11px;margin-bottom:4px}.arrow{color:var(--accent);font-size:16px}
+
+    .contact { text-align:center; }.contact h2 { max-width:930px; margin:16px auto 20px; }.contact p { max-width:610px; margin:0 auto; }.contact .buttons { justify-content:center; margin-top:34px; }.contact-note { margin-top:28px; font-size:12px; color:rgba(245,241,232,.47); }
+    .deck-nav { position:fixed; right:19px; top:50%; transform:translateY(-50%); display:grid; gap:9px; z-index:5; }.deck-nav a {width:8px;height:8px;border-radius:50%;background:rgba(245,241,232,.27);border:1px solid rgba(245,241,232,.15);transition:transform .2s ease,background .2s ease;text-indent:-9999px}.deck-nav a.active{background:var(--accent);transform:scale(1.45);border-color:var(--accent)}
+    .topbar { position:fixed; top:0; left:0; right:0; display:flex; align-items:center; justify-content:space-between; padding:22px clamp(28px,5vw,76px); z-index:4; pointer-events:none; }.topbar a {pointer-events:auto;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.08em}.topbar .brand {font-family:Georgia,serif;font-size:16px;letter-spacing:-.04em}.topbar .availability {color:rgba(245,241,232,.62)}
+    @keyframes float {50% {transform:translateY(-13px) rotate(1deg)}} @keyframes scrollHint {0%,100%{transform:translateY(0);opacity:.3}50%{transform:translateY(7px);opacity:1}}
+    @media (max-width: 850px) {
+      .opening-grid, .project-grid { grid-template-columns: 1fr; }
+      .opening-grid { align-items:start; } .monogram { margin: 0; width: min(220px, 55vw); }
+      .preview { min-height: 420px; } .signal-layout, .housing-viz, .ab-layout, .oasis-layout, .diplomacy-layout { grid-template-columns: 1fr; }
+      .signal-layout { min-height: 500px; }.signal-panel{display:none}.housing-bars{padding:15px}.diplomacy-panel{display:none}.video-frame{min-height:330px}.oasis-map{min-height:270px}
+      .slide { padding-top: 90px; padding-bottom: 60px; }.slide-number{bottom:22px}.deck-nav{display:none}.topbar .availability{display:none}
+    }
+    @media (max-width: 560px) {
+      .detail { grid-template-columns: 1fr; gap:5px; }.detail .label{padding:0}.preview{padding:16px;min-height:390px}.cern-stats{grid-template-columns:1fr}.hint{margin-top:25px}.topbar{padding:18px 22px}.slide-number{right:22px}.metric-big{font-size:58px}
+    }
+    @media (prefers-reduced-motion: reduce) { html,.deck{scroll-behavior:auto}.preview,.monogram,.hint .mouse i{animation:none;transition:none} }
+  </style>
 </head>
 <body>
-<main>
-<div class="tag">Data scientist building tools that ship</div>
-<h1>Signal over noise.</h1>
-<p>I build data products for forecasting, markets, risk, and decision intelligence. My background moves from physics at LMU Munich and CERN research to an M.S. in Data Science at GW with a 4.0 GPA.</p>
-<div class="links"><a href="https://github.com/ilgazkuscu">GitHub</a><a href="https://linkedin.com/in/ilgaz-kuscu-9a4a68331">LinkedIn</a><a href="mailto:ilgazkuscu@gmail.com">Email</a></div>
-<h2>Selected work</h2>
-<div class="card"><small>Political intelligence</small><h3>SignalOS</h3><p>Whale-trade detection and signal extraction for prediction markets.</p></div>
-<div class="card"><small>Scientific computing</small><h3>CERN ATLAS Pipeline</h3><p>20x speed improvements on petabyte-scale particle physics data.</p></div>
-<div class="card"><small>Machine learning</small><h3>US Accident Severity</h3><p>Severity prediction and reproducible analytics on U.S. crash records.</p></div>
-<div class="card"><small>Forecasting</small><h3>GDP Nowcasting</h3><p>Real-time GDP estimation using time-series models and macro indicators.</p></div>
-<h2>Contact</h2>
-<p>Email: <a href="mailto:ilgazkuscu@gmail.com">ilgazkuscu@gmail.com</a></p>
-</main>
+  <header class="topbar" aria-label="Primary">
+    <a class="brand" href="#opening">IK / Portfolio</a>
+    <a class="availability" href="#contact">Available for data, AI & automation work</a>
+  </header>
+
+  <nav class="deck-nav" aria-label="Deck navigation">
+    <a class="active" href="#opening">Opening</a>
+    <a href="#signalos">SignalOS</a>
+    <a href="#cern">CERN</a>
+    <a href="#housing">Housing</a>
+    <a href="#ab-test">A/B test</a>
+    <a href="#oasis">OASIS</a>
+    <a href="#diplomacy">Diplomacy</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main class="deck" id="deck">
+    <section id="opening" class="slide is-active" aria-labelledby="opening-title">
+      <span class="slide-number">01 / 08</span>
+      <div class="slide-inner opening-grid">
+        <div class="opening-copy">
+          <div class="eyebrow">Physics → data science → deployed systems</div>
+          <h1 id="opening-title">Signal over<br />noise.</h1>
+          <p>MS Data Science student at GWU with a physics and CERN/ATLAS background. I build reliable data, AI, and automation systems that turn complex evidence into decisions.</p>
+          <div class="hint" aria-hidden="true"><span class="mouse"><i></i></span> Scroll to enter the work</div>
+        </div>
+        <div class="monogram" aria-label="Ilgaz Kuscu monogram"><span>IK</span></div>
+      </div>
+    </section>
+
+    <section id="signalos" class="slide" aria-labelledby="signalos-title">
+      <span class="slide-number">02 / 08</span>
+      <div class="slide-inner project-grid">
+        <div class="project-copy">
+          <div class="eyebrow">AI analytics & automation</div>
+          <h2 id="signalos-title">SignalOS</h2>
+          <p class="problem">High-impact news, market moves, and raw information arrive faster than analysts can connect them.</p>
+          <div class="detail-list">
+            <div class="detail"><span class="label">What I built</span><p>A full-stack prediction-market intelligence platform that ingests live news and market activity, extracts structured signals with LLM workflows, and replays event-to-market timing.</p></div>
+            <div class="detail"><span class="label">Tools</span><p>React, FastAPI, PostgreSQL, Railway, LLM workflows, APIs</p></div>
+            <div class="detail"><span class="label">Result</span><p>Observed event-driven prediction-market repricings of up to 40 percentage points toward the forecast, with replay and backtesting for auditability.</p></div>
+          </div>
+          <div class="buttons">
+            <a class="btn primary" href="https://projectzero-dashboard.vercel.app" target="_blank" rel="noreferrer">Live demo <span aria-hidden="true">↗</span></a>
+            <span class="btn placeholder" aria-label="GitHub link not added">+ Add GitHub link</span>
+            <span class="btn placeholder" aria-label="Case study link not added">+ Add case study</span>
+          </div>
+        </div>
+        <div class="preview" aria-label="SignalOS interface preview">
+          <div class="preview-top"><span class="preview-title">Event-to-market replay</span><span class="status">live signals</span></div>
+          <div class="signal-layout">
+            <div class="signal-chart">
+              <div><div class="metric-big">+40 pp</div><p class="metric-caption">Largest observed reprice toward forecast</p></div>
+              <div class="timeline">
+                <svg viewBox="0 0 500 180" preserveAspectRatio="none" aria-hidden="true"><path d="M0 144 C55 137 75 133 110 132 S170 124 200 112 S278 106 312 78 S381 70 420 48 S465 31 500 24" fill="none" stroke="#e0a066" stroke-width="3"/><path d="M0 150 C80 146 150 151 220 141 S326 132 384 116 S432 105 500 93" fill="none" stroke="rgba(245,241,232,.35)" stroke-width="1.5" stroke-dasharray="4 6"/></svg>
+                <i class="news-pulse p1"></i><i class="news-pulse p2"></i><i class="news-pulse p3"></i>
+              </div>
+              <div class="label">News event → extracted signal → market response</div>
+            </div>
+            <div class="signal-panel"><div class="label">Signal feed</div><div class="feed"><div class="feed-row"><b>Breaking event detected</b>Source and timestamp retained</div><div class="feed-row"><b>LLM structured extraction</b>Entities, claim, directional signal</div><div class="feed-row"><b>Market move flagged</b>Cross-market response tracked</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cern" class="slide" aria-labelledby="cern-title">
+      <span class="slide-number">03 / 08</span>
+      <div class="slide-inner project-grid">
+        <div class="project-copy">
+          <div class="eyebrow">Scientific computing & validation</div>
+          <h2 id="cern-title">CERN Higgs<br />Analysis</h2>
+          <p class="problem">Large experimental datasets must be fast enough to study and reliable enough to trust before analysis begins.</p>
+          <div class="detail-list">
+            <div class="detail"><span class="label">What I built</span><p>Reproducible Python pipelines and automated validation checks for ATLAS Open Data, including cutflow comparisons, anomaly detection, and H→γγ mass reconstruction.</p></div>
+            <div class="detail"><span class="label">Tools</span><p>Python, pandas, NumPy, uproot, Awkward Arrays, ROOT/Open Data</p></div>
+            <div class="detail"><span class="label">Result</span><p>Reproduced the diphoton mass peak near 123 GeV, improved runtime by up to 20×, and increased usable-event quality by up to 50% through validation workflows.</p></div>
+          </div>
+          <div class="buttons"><span class="btn placeholder">+ Add GitHub link</span><span class="btn placeholder">+ Add notebook</span><span class="btn placeholder">+ Add report</span></div>
+        </div>
+        <div class="preview" aria-label="CERN Higgs analysis preview">
+          <div class="preview-top"><span class="preview-title">H→γγ validation</span><span class="status">reproducible</span></div>
+          <div class="cern-chart"><span class="peak-label">~123 GeV peak</span><svg viewBox="0 0 500 260" preserveAspectRatio="none" aria-hidden="true"><path d="M0 242 C54 239 79 236 112 234 S160 231 194 222 S231 207 247 136 S263 40 277 135 S297 208 322 221 S397 232 500 239" fill="none" stroke="#e0a066" stroke-width="3"/><path d="M0 242 C120 236 240 232 500 241" fill="none" stroke="rgba(245,241,232,.35)" stroke-width="1.5" stroke-dasharray="4 6"/></svg></div>
+          <div class="cern-stats"><div class="mini-stat"><b>20×</b><span>Runtime improvement</span></div><div class="mini-stat"><b>50%</b><span>Usable-event quality gain</span></div><div class="mini-stat"><b>123</b><span>GeV peak reproduced</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="housing" class="slide" aria-labelledby="housing-title">
+      <span class="slide-number">04 / 08</span>
+      <div class="slide-inner project-grid">
+        <div class="project-copy">
+          <div class="eyebrow">SQL & market intelligence</div>
+          <h2 id="housing-title">U.S. Housing<br />Market Analysis</h2>
+          <p class="problem">Housing data is fragmented across markets, formats, and economic context, making regional comparison unreliable.</p>
+          <div class="detail-list">
+            <div class="detail"><span class="label">What I built</span><p>A standardized regional dataset joining 100K+ listing records with Census indicators, plus regularized regression and random-forest modeling of price and affordability drivers.</p></div>
+            <div class="detail"><span class="label">Tools</span><p>SQL, Python, R, pandas, glmnet, random forests, Census data</p></div>
+            <div class="detail"><span class="label">Result</span><p>Mapped metro-level affordability and price formation across 300+ U.S. metros, validating outputs against Redfin benchmarks.</p></div>
+          </div>
+          <div class="buttons"><span class="btn placeholder">+ Add notebook</span><span class="btn placeholder">+ Add GitHub link</span><span class="btn placeholder">+ Add dashboard</span><span class="btn placeholder">+ Add report</span></div>
+        </div>
+        <div class="preview" aria-label="Housing market analysis preview">
+          <div class="preview-top"><span class="preview-title">Metro-level affordability map</span><span class="status">300+ metros</span></div>
+          <div class="housing-viz"><div class="metro-map chart-card"><div class="map-shape"></div><i class="map-dot"></i><i class="map-dot"></i><i class="map-dot"></i><i class="map-dot"></i><i class="map-dot"></i><i class="map-dot"></i><i class="map-dot"></i></div><div class="housing-bars chart-card"><div class="metric-big">100K+</div><p class="metric-caption">Listings standardized and joined with Census indicators</p><div class="bar-row"><span>Income</span><div class="bar"><i style="width:76%"></i></div><b>0.76</b></div><div class="bar-row"><span>Rates</span><div class="bar"><i style="width:61%"></i></div><b>0.61</b></div><div class="bar-row"><span>Supply</span><div class="bar"><i style="width:49%"></i></div><b>0.49</b></div><div class="bar-row"><span>Density</span><div class="bar"><i style="width:38%"></i></div><b>0.38</b></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ab-test" class="slide" aria-labelledby="ab-title">
+      <span class="slide-number">05 / 08</span>
+      <div class="slide-inner project-grid">
+        <div class="project-copy">
+          <div class="eyebrow">Experimentation & growth analytics</div>
+          <h2 id="ab-title">A/B Testing</h2>
+          <p class="problem">A higher conversion rate is not enough. Teams need evidence that a change caused the lift and what it means commercially.</p>
+          <div class="detail-list">
+            <div class="detail"><span class="label">What I built</span><p>A statistically rigorous analysis of an ad-versus-PSA conversion experiment, including two-proportion z-tests, chi-squared tests, bootstrap confidence intervals, and corrected subgroup checks.</p></div>
+            <div class="detail"><span class="label">Tools</span><p>Python, SciPy, hypothesis testing, bootstrap confidence intervals</p></div>
+            <div class="detail"><span class="label">Result</span><p>Measured a statistically significant +0.77 percentage-point conversion lift across 588K sessions (p &lt; 0.0001) and translated the lift into projected monthly revenue impact.</p></div>
+          </div>
+          <div class="buttons"><span class="btn placeholder">+ Add notebook</span><span class="btn placeholder">+ Add GitHub link</span><span class="btn placeholder">+ Add report</span></div>
+        </div>
+        <div class="preview" aria-label="A B testing preview">
+          <div class="preview-top"><span class="preview-title">Conversion experiment</span><span class="status">statistically significant</span></div>
+          <div class="ab-layout"><div class="conversion-card chart-card"><div class="metric-big">+0.77 pp</div><p class="metric-caption">Conversion lift: ad vs. PSA, 588K sessions</p><div class="conversion-bars"><div class="conversion"><header><span>PSA</span><b>Baseline</b></header><div class="bigbar"><i style="height:56%"></i></div></div><div class="conversion"><header><span>Ad</span><b>Lift observed</b></header><div class="bigbar"><i style="height:68%"></i></div></div></div></div><div class="confidence chart-card"><div class="label">Evidence stack</div><p><b style="color:var(--cream)">p &lt; 0.0001</b><br />Two-proportion z-test and chi-squared test</p><div class="ci" aria-label="Bootstrap confidence interval visualization"></div><p>Bootstrap confidence intervals and corrected subgroup analysis kept the finding decision-ready.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="oasis" class="slide" aria-labelledby="oasis-title">
+      <span class="slide-number">06 / 08</span>
+      <div class="slide-inner project-grid">
+        <div class="project-copy">
+          <div class="eyebrow">Optimization & food access</div>
+          <h2 id="oasis-title">OASIS Food<br />Access Optimization</h2>
+          <p class="problem">Small corner stores in DC Wards 7 and 8 face fragmented orders, supplier minimums, and high produce costs that restrict fresh-food access.</p>
+          <div class="detail-list">
+            <div class="detail"><span class="label">What I built</span><p>A pooled-route and procurement model that combines demand from trusted neighborhood stores into one shared delivery route, reducing fragmented purchasing and storage risk.</p></div>
+            <div class="detail"><span class="label">Tools</span><p>Supply-chain design, routing logic, pricing model, stakeholder research</p></div>
+            <div class="detail"><span class="label">Result</span><p>Modeled store procurement at about 68% of retail price, indicating roughly 30% lower produce acquisition costs while preserving sustainable margins.</p></div>
+          </div>
+          <div class="buttons"><span class="btn placeholder">+ Add demo</span><span class="btn placeholder">+ Add GitHub link</span><span class="btn placeholder">+ Add slides</span><span class="btn placeholder">+ Add report</span></div>
+        </div>
+        <div class="preview" aria-label="OASIS supply chain preview">
+          <div class="preview-top"><span class="preview-title">Shared route model</span><span class="status">DC Wards 7 & 8</span></div>
+          <div class="oasis-layout"><div class="oasis-map"><div class="store s1">Trusted<br />corner store</div><div class="store s2">Trusted<br />corner store</div><div class="store s3">Trusted<br />corner store</div><div class="store s4">Trusted<br />corner store</div><div class="supplier">Pooled<br />supplier order</div><div class="route"></div></div><div class="oasis-economics chart-card"><div class="metric-big">~30%</div><p class="metric-caption">Modeled produce-acquisition cost reduction</p><div class="price-comparison"><div class="price"><strong>100%</strong><small>Fragmented retail baseline</small></div><div class="price"><strong>68%</strong><small>Pooled procurement model</small></div></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="diplomacy" class="slide" aria-labelledby="diplomacy-title">
+      <span class="slide-number">07 / 08</span>
+      <div class="slide-inner project-grid">
+        <div class="project-copy">
+          <div class="eyebrow">Computational social science</div>
+          <h2 id="diplomacy-title">Diplomacy Video<br />Analysis</h2>
+          <p class="problem">Diplomatic interactions are rich in nonverbal and discourse signals, but researchers lack a reproducible dataset that connects them to context.</p>
+          <div class="detail-list">
+            <div class="detail"><span class="label">What I built</span><p>An MVP research dataset design for timestamp-level U.S. president–foreign leader interactions, connecting video, emotion-model estimates, transcripts, raw cues, source URLs, and international-relations context.</p></div>
+            <div class="detail"><span class="label">Tools</span><p>Video data pipeline design, multimodal models, transcripts, timestamped metadata</p></div>
+            <div class="detail"><span class="label">Insight</span><p>The work centers reproducibility: model labels remain estimates, while raw video cues, model version, confidence, and transcript context remain inspectable.</p></div>
+          </div>
+          <div class="buttons"><span class="btn placeholder">+ Add demo</span><span class="btn placeholder">+ Add GitHub link</span><span class="btn placeholder">+ Add dataset</span><span class="btn placeholder">+ Add report</span></div>
+        </div>
+        <div class="preview" aria-label="Diplomacy video analysis preview">
+          <div class="preview-top"><span class="preview-title">Timestamp-level evidence</span><span class="status">research MVP</span></div>
+          <div class="diplomacy-layout"><div class="video-frame"><div class="video-scene"><div class="person president"></div><div class="person leader"></div><div class="face-box"></div><span class="timestamp">00:14:23 · source video</span></div></div><div class="diplomacy-panel"><div class="label">Reproducible pipeline</div><div class="pipeline"><div class="step"><b>Video</b>Source URL and event metadata</div><div class="arrow">→</div><div class="step"><b>Models</b>Raw cues, version, confidence</div><div class="arrow">→</div><div class="step"><b>Context</b>Transcript and IR annotation</div></div><p>Labels are recorded as model estimates, not ground truth.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="slide contact" aria-labelledby="contact-title">
+      <span class="slide-number">08 / 08</span>
+      <div class="slide-inner">
+        <div class="eyebrow">End of deck / start a conversation</div>
+        <h2 id="contact-title">Build something that makes the next decision clearer.</h2>
+        <p>I am interested in data products, AI automation, applied research, and decision systems where strong evidence matters.</p>
+        <div class="buttons">
+          <span class="btn placeholder">+ Add resume PDF</span>
+          <a class="btn" href="https://www.linkedin.com/in/ilgaz-kuscu-9a4a68331" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="https://github.com/ilgazkuscu" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a class="btn primary" href="mailto:ilgazkuscu@gmail.com">Email Ilgaz <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="contact-note">Washington, DC · M.S. Data Science at GWU · B.S. Physics, LMU Munich</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const deck = document.getElementById('deck');
+      const slides = [...document.querySelectorAll('.slide')];
+      const navLinks = [...document.querySelectorAll('.deck-nav a')];
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            slides.forEach((slide) => slide.classList.toggle('is-active', slide === entry.target));
+            navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+            history.replaceState(null, '', `#${entry.target.id}`);
+          }
+        });
+      }, { root: deck, threshold: .58 });
+      slides.forEach((slide) => observer.observe(slide));
+
+      document.addEventListener('keydown', (event) => {
+        const current = slides.findIndex((slide) => slide.classList.contains('is-active'));
+        if (['ArrowDown', 'PageDown'].includes(event.key) && current < slides.length - 1) {
+          event.preventDefault(); slides[current + 1].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+        if (['ArrowUp', 'PageUp'].includes(event.key) && current > 0) {
+          event.preventDefault(); slides[current - 1].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+        if (event.key === 'Home') { event.preventDefault(); slides[0].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' }); }
+        if (event.key === 'End') { event.preventDefault(); slides.at(-1).scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' }); }
+      });
+    })();
+  </script>
 </body>
 </html>
