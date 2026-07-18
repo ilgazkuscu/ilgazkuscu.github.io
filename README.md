@@ -27,10 +27,13 @@ Open the local URL printed by Vite.
 ## Validation
 
 ```bash
+npm test
 npm run build
 ```
 
-The build runs the TypeScript project references and then writes the production site to `dist/`.
+The content check protects verified public claims and canonical project links.
+The build runs the TypeScript project references and then writes the production
+site to `dist/`. Both commands also run in GitHub Actions.
 
 ## Deployment
 
