@@ -6,7 +6,7 @@ import { ProjectDeck } from './components/ProjectDeck';
 
 const links = [
   { label: 'GitHub', href: 'https://github.com/ilgazkuscu', icon: Github },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/ilgaz-kuscu-9a4a68331', icon: Linkedin },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ilgazkuscu', icon: Linkedin },
   { label: 'Email', href: 'mailto:ilgazkuscu@gmail.com', icon: Mail },
   { label: 'Resume PDF', href: '/resume.pdf', icon: FileText }
 ];

@@ -1,80 +1,48 @@
 # Ilgaz Kuscu Portfolio
 
-A single-page portfolio for `ilgazkuscu.github.io`, built as a dark, projects-forward site with Apple-style expanding project decks.
+The source for [ilgazkuscu.github.io](https://ilgazkuscu.github.io), a single-page portfolio organized as a vertical, scroll-snapping project deck.
 
-## Stack
+## Production surface
 
-- Vite
-- React
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- GitHub Pages
+The deployed site is currently driven by the static entry point at the repository root:
 
-## Local development
+- `index.html` contains the portfolio structure and project copy.
+- `readability.css` owns the production layout and visual system.
+- `higgs-explorer.js` powers the interactive CERN chart.
+- `public/` contains files copied into the build output unchanged.
+
+The `src/` directory contains a separate React prototype. It is type-checked during the build, but it is not mounted by the production `index.html`. Until the two implementations are intentionally consolidated, edit the root files for deployed-site changes and keep shared links or claims consistent in `src/`.
+
+## Development
+
+Requirements: Node.js 20 or newer and npm.
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
 Open the local URL printed by Vite.
 
-## Production build
+## Validation
 
 ```bash
 npm run build
-npm run preview
 ```
 
-## Deploy to GitHub Pages
+The build runs the TypeScript project references and then writes the production site to `dist/`.
 
-This repo is configured to deploy the static `dist` folder with `gh-pages`.
+## Deployment
 
 ```bash
-npm install
-npm run build
 npm run deploy
 ```
 
-After deployment, set GitHub Pages to serve from the `gh-pages` branch if it is not already configured that way.
+This builds the site and publishes `dist/` to the `gh-pages` branch. GitHub Pages must be configured to serve that branch.
 
-## Editing project content
+## Content guidelines
 
-All project copy lives in:
-
-```text
-src/data/projects.ts
-```
-
-Each project supports:
-
-- title
-- category
-- tagline
-- context
-- what I built bullets
-- stack chips
-- metrics
-- GitHub and demo links
-
-## Interaction notes
-
-Project cards open into a fullscreen deck. The deck supports:
-
-- vertical scroll-snap sections
-- close button
-- Escape-to-close
-- focus restoration after close
-- progress dots
-- reduced-motion support
-
-## Resume link
-
-The hero includes a `/resume.pdf` link. Add a file at:
-
-```text
-public/resume.pdf
-```
-
-or update the link in `src/App.tsx`.
+- Link projects to their public repository or live demo when one exists.
+- Keep metrics only when the repository or linked analysis supports them.
+- Describe private or in-progress work without implying that its source is public.
+- Verify desktop and mobile layouts after changing project copy.

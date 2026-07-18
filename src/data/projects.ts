@@ -18,37 +18,38 @@ export const projects: Project[] = [
     id: 'signalos',
     title: 'SignalOS',
     category: 'Political intelligence',
-    tagline: 'Whale-trade detection and signal extraction for on-chain prediction markets.',
-    context: "Polymarket's geopolitical markets contain real institutional signal, but their UI doesn't surface who's trading or why. SignalOS does.",
+    tagline: 'Inspectable prediction-market intelligence built from public evidence and market data.',
+    context: 'Fast-moving markets compress many competing explanations into one price. SignalOS preserves the evidence trail behind its own changing belief.',
     built: [
-      'Whale trade detection via Polymarket CLOB and Gamma APIs.',
-      'Real-time news ingestion pipeline using RSS, GDELT, NewsAPI, and Claude API for signal extraction.',
-      'MarketFamily abstraction, temporal replay engine, and Analyst Workbench React app.'
+      'Multi-source news ingestion with explicit source health and fixture fallback behavior.',
+      'Market-family contracts, structured evidence updates, and replay without future-signal leakage.',
+      'Next.js analyst workspace backed by TypeScript domain modules and a specialized Python API.'
     ],
-    stack: ['React', 'Python', 'FastAPI', 'Railway', 'Claude API', 'Polymarket CLOB/Gamma APIs'],
+    stack: ['Next.js', 'TypeScript', 'Python', 'FastAPI', 'Polymarket'],
     status: 'In active development',
     metrics: [
       { value: 'Live', label: 'market monitoring thesis' },
       { value: 'Multi-source', label: 'news and market ingestion' }
     ],
-    github: 'https://github.com/ilgazkuscu/signalOS.github.io'
+    github: 'https://github.com/ilgazkuscu/SignalOS',
+    demo: 'https://signalos-showcase.vercel.app/showcase'
   },
   {
     id: 'cern-atlas',
-    title: 'CERN ATLAS Open Data Pipeline',
+    title: 'CERN ATLAS Open Data Analysis',
     category: 'Scientific computing',
-    tagline: '20x speed improvements on petabyte-scale particle physics data.',
-    context: 'ATLAS experiment data pipelines were the bottleneck for open-data analyses.',
+    tagline: 'Notebook-based Higgs-boson analysis using public ATLAS collision data.',
+    context: 'ATLAS Open Data makes real particle-physics analysis reproducible outside the experiment, but event selection and data handling still require careful validation.',
     built: [
-      'Optimized data processing pipelines for ATLAS Open Data.',
-      'Benchmarked and rewrote critical sections.',
-      'Achieved 20x speed improvements on petabyte-scale workloads.'
+      'Explored Higgs-to-diphoton and four-lepton analysis workflows in Python notebooks.',
+      'Compared pandas and Awkward Array approaches for columnar event data.',
+      'Tested how individual selection requirements affect the resulting distributions.'
     ],
-    stack: ['Python', 'ROOT', 'parallel processing', 'distributed computing'],
-    where: 'CERN, LMU Munich undergraduate research',
+    stack: ['Python', 'Jupyter', 'pandas', 'Awkward Array', 'ATLAS Open Data'],
+    where: 'LMU Munich undergraduate research using CERN ATLAS Open Data',
     metrics: [
-      { value: '20x', label: 'speed improvement' },
-      { value: 'Petabyte', label: 'scale workloads' }
+      { value: 'H→γγ', label: 'diphoton channel explored' },
+      { value: 'H→ZZ', label: 'four-lepton channel explored' }
     ],
     github: 'https://github.com/ilgazkuscu/CERN-THESIS'
   },
@@ -87,7 +88,7 @@ export const projects: Project[] = [
       { value: 'EDA', label: 'from cleaning to exploration' },
       { value: 'Dash', label: 'interactive delivery' }
     ],
-    github: 'https://github.com/ilgazkuscu/6401_Final-Project_US_Accidents_Dataset'
+    github: 'https://github.com/ilgazkuscu/US-Accidents-2016-2023-'
   },
   {
     id: 'clocka',
