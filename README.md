@@ -15,7 +15,7 @@ The `src/` directory contains a separate React prototype. It is type-checked dur
 
 ## Development
 
-Requirements: Node.js 20 or newer and npm.
+Requirements: Node.js 24 or newer and npm.
 
 ```bash
 npm ci
