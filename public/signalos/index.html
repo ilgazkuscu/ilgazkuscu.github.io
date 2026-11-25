@@ -53,7 +53,7 @@ a{color:inherit}
 <div class="legend"><span><i style="background:var(--poly)"></i>Polymarket</span><span><i style="background:var(--sig)"></i>SignalOS</span></div>
 <div class="fig"><svg id="chart" role="img" aria-label="Polymarket price and SignalOS probability for the April 30 deadline, with each news record"></svg></div>
 <div class="ctl"><button class="btn" id="play">Play</button><input type="range" id="day" aria-label="Day"></div>
-<p class="src">Squares under the axis are news records: dark moved SignalOS, gray had no effect, light gray was left out. Click a square or drag the slider.</p>
+<p class="src">Dots in the News row are days with reports: dark if a report moved SignalOS, gray if none did; bigger means more reports. Click a dot or drag the slider.</p>
 <div class="read" id="read"></div>
 <div id="daynews"></div>
 <h2>Every April deadline</h2>
@@ -123,13 +123,12 @@ slider.min=0;slider.max=n-1;let idx=Math.max(0,days.indexOf('2026-04-12'));slide
 const draw=()=>{const W=svg.clientWidth,H=svg.clientHeight;if(!W)return;const P={t:16,r:12,b:70,l:44};
 const x=i=>P.l+(i/(n-1))*(W-P.l-P.r), y=v=>P.t+(1-v/100)*(H-P.t-P.b);
 const path=k=>{let s='',o=false;days.forEach((d,i)=>{const f=byDate.get(d);const v=f?f[k]:null;if(v==null){o=false;return}s+=(o?'L':'M')+x(i).toFixed(1)+','+y(v).toFixed(1);o=true});return s};
-const base=H-26,per={};D.items.forEach(i=>per[i.d]=(per[i.d]||0)+1);const step=Math.min(7,40/Math.max(...Object.values(per)));const st={};
+const base=H-26;
 let g='';[0,25,50,75,100].forEach(t=>{g+=`<line x1="${P.l}" x2="${W-P.r}" y1="${y(t)}" y2="${y(t)}" stroke="var(--rule)"/><text x="${P.l-8}" y="${y(t)+5}" text-anchor="end" font-size="13" fill="var(--muted)">${t}%</text>`});
 const m=days.indexOf('2026-04-12');if(m>=0){g+=`<line x1="${x(m)}" x2="${x(m)}" y1="${P.t}" y2="${base+4}" stroke="var(--ink)" stroke-width="2"/><text x="${x(m)+8}" y="${P.t+16}" font-size="15" font-weight="700" fill="var(--ink)">${W>520?'Apr 12: Vance leaves Islamabad, talks end':'Apr 12'}</text>`}
 g+=`<path d="${path('s')}" fill="none" stroke="var(--sig)" stroke-width="3.5"/><path d="${path('p')}" fill="none" stroke="var(--poly)" stroke-width="3.5"/>`;
 g+=`<line x1="${x(idx)}" x2="${x(idx)}" y1="${P.t}" y2="${base+4}" stroke="var(--ink)" stroke-dasharray="3 4"/>`;
-D.items.forEach(i=>{const k=days.indexOf(i.d);if(k<0)return;const l=st[i.d]||0;st[i.d]=l+1;g+=`<rect data-i="${k}" x="${x(k)-4}" y="${base-(l+1)*step}" width="8" height="${Math.max(3,step-1)}" fill="${color[i.st]}" style="cursor:pointer"><title>${esc(i.d+' · '+i.h)}</title></rect>`});
-const ticks=days.map((d,i)=>[d,i]).filter(([d],i)=>i===0||d.endsWith('-01')||d.endsWith('-15')||i===n-1);
+const agg={};D.items.forEach(i=>{const a=agg[i.d]||(agg[i.d]={n:0,m:0});a.n++;if(i.st==='moved')a.m++});g+=`<line x1="${P.l}" x2="${W-P.r}" y1="${base-14}" y2="${base-14}" stroke="var(--rule)"/><text x="${P.l-8}" y="${base-9}" text-anchor="end" font-size="13" fill="var(--muted)">News</text>`;Object.entries(agg).forEach(([d,a])=>{const k=days.indexOf(d);if(k<0)return;const r=Math.min(9,3.5+a.n*0.8);g+=`<circle data-i="${k}" cx="${x(k)}" cy="${base-14}" r="${r}" fill="${a.m?'var(--sig)':'var(--muted)'}" stroke="var(--bg)" stroke-width="1.5" style="cursor:pointer"><title>${esc(short(d)+': '+a.n+' report'+(a.n>1?'s':'')+(a.m?', '+a.m+' moved SignalOS':''))}</title></circle>`});const ticks=days.map((d,i)=>[d,i]).filter(([d],i)=>i===0||d.endsWith('-01')||d.endsWith('-15')||i===n-1);
 if(W>520)ticks.forEach(([d,i])=>{g+=`<text x="${x(i)}" y="${H-6}" font-size="13" fill="var(--muted)" text-anchor="${i===0?'start':i===n-1?'end':'middle'}">${esc(short(d))}</text>`});
 svg.innerHTML=g;};
 svg.addEventListener('click',e=>{const k=e.target.dataset&&e.target.dataset.i;if(k!=null){setDay(+k)}});
